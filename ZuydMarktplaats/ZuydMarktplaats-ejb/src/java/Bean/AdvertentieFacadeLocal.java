@@ -7,6 +7,8 @@ package Bean;
 import Entitie.Advertentie;
 import java.util.List;
 import javax.ejb.Local;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 
 /**
  *
@@ -28,5 +30,10 @@ public interface AdvertentieFacadeLocal {
     List<Advertentie> findRange(int[] range);
 
     int count();
+
+    public List<Advertentie> getAllAdvertisements();
+
+    @ TransactionAttribute(TransactionAttributeType.REQUIRED)
+    public void deleteAdvertentie(Integer id);
     
 }

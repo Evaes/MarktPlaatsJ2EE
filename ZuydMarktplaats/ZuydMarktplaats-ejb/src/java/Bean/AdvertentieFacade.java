@@ -5,7 +5,10 @@
 package Bean;
 
 import Entitie.Advertentie;
+import java.util.List;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -27,4 +30,15 @@ public class AdvertentieFacade extends AbstractFacade<Advertentie> implements Ad
         super(Advertentie.class);
     }
     
+    @Override
+    public List<Advertentie> getAllAdvertisements(){
+        return em.createQuery("SELECT a FROM Advertentie a").getResultList();
+    }
+    
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
+    @Override
+    public void deleteAdvertentie(Integer id){
+        Advertentie advertentie = em.find(Advertentie.class, id);
+        em.remove(advertentie);
+    }
 }

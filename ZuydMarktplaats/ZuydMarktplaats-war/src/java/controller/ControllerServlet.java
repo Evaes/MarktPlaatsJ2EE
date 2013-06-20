@@ -4,7 +4,9 @@
  */
 package controller;
 
+import Bean.AdvertentieFacadeLocal;
 import Bean.GebruikerFacadeLocal;
+import Entitie.Advertentie;
 import Entitie.Gebruiker;
 import Session.UserManager;
 import java.io.IOException;
@@ -22,9 +24,11 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Erwin
  */
-@WebServlet(name = "ControllerServlet", urlPatterns = {"/administrator.jsp", "/delete_user.jsp"})
+@WebServlet(name = "ControllerServlet", urlPatterns = {"/administrator.jsp", "/delete_user.jsp", "/delete_adv.jsp"})
 public class ControllerServlet extends HttpServlet {
 
+    @EJB
+    private AdvertentieFacadeLocal advertentieFacade;
     @EJB
     private GebruikerFacadeLocal gebruikerFacade;
     @EJB
@@ -48,18 +52,28 @@ public class ControllerServlet extends HttpServlet {
         String userPath = request.getServletPath();
 
         if (userPath.equals("/administrator.jsp")) {
-
-            List<Gebruiker> g = gebruikerFacade.getAllUsers();
-
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/AdminPage.jsp");
-            request.setAttribute("Users", g);
-            dispatcher.forward(request, response);
-        } else if(userPath.equals("/delete_user.jsp")){
+//            List<Gebruiker> g = gebruikerFacade.getAllUsers();
+//            List<Advertentie> a = advertentieFacade.getAllAdvertisements();
+//
+//            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/AdminPage.jsp");
+//            request.setAttribute("Users", g);
+//            request.setAttribute("Advertenties", a);
+//            dispatcher.forward(request, response);
+        } else if (userPath.equals("/delete_user.jsp")) {
             Integer id = Integer.parseInt(request.getParameter("user_id"));
             gebruikerFacade.deleteUser(id);
-             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/AdminPage.jsp");
-             dispatcher.forward(request, response);
+        } else if (userPath.equals("/delete_adv.jsp")) {
+            Integer id = Integer.parseInt(request.getParameter("adv_id"));
+            advertentieFacade.deleteAdvertentie(id);
         }
+
+        List<Advertentie> a = advertentieFacade.getAllAdvertisements();
+        request.setAttribute("Advertenties", a);
+
+        List<Gebruiker> g = gebruikerFacade.getAllUsers();
+        request.setAttribute("Users", g);
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/AdminPage.jsp");
+        dispatcher.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

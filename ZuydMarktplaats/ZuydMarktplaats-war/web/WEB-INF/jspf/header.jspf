@@ -1,0 +1,19 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <div id="main">
+            <div id="header">
+                <div id="header-left">
+                    Marktplaats Zuyd
+                </div>
+                <div id="header-right">
+                    Login
+                </div>
+            </div>

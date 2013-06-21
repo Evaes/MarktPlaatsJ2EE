@@ -1,19 +1,7 @@
-<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
-<%-- 
-    Document   : test
-    Created on : 20-jun-2013, 11:02:18
-    Author     : Erwin
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
+<div id="middle">
+    <div id="middle-left">
+    </div>
+    <div id="middle-right">
         <h1>Gebruikers</h1>
 
         <table border="1px">
@@ -28,17 +16,17 @@
             <c:forEach var="columnName" items="${Users}">
                 <tr>
                     <td><c:out value="${columnName.voornaam}"/></td>
-                    <td><c:out value="${columnName.achternaam}"/></td>
-                    <td><c:out value="${columnName.telefoonnummer}"/></td>
-                    <td><c:out value="${columnName.email}"/></td>               
-                    <td><c:out value="${columnName.username}"/></td>
-                    <td><a href="delete_user.jsp?user_id=${columnName.id}">Delete</a></td>
+                <td><c:out value="${columnName.achternaam}"/></td>
+                <td><c:out value="${columnName.telefoonnummer}"/></td>
+                <td><c:out value="${columnName.email}"/></td>               
+                <td><c:out value="${columnName.username}"/></td>
+                <td><a href="delete_user.jsp?user_id=${columnName.id}">Delete</a></td>
                 </tr>
             </c:forEach>
         </table>
-        
+
         <hr>
-        
+
         <h1>Advertenties</h1>
         <table border="1px">
             <tr>
@@ -50,12 +38,12 @@
             <c:forEach var="columnName" items="${Advertenties}">
                 <tr>
                     <td><c:out value="${columnName.naam}"/></td>
-                    <td><c:out value="${columnName.beschrijving}"/></td>
-                    <td><c:out value="${columnName.vraagprijs}"/></td>
-                    <td><a href="delete_adv.jsp?adv_id=${columnName.id}">Delete</a></td>
+                <td><c:out value="${columnName.beschrijving}"/></td>
+                <td><c:out value="${columnName.vraagprijs}"/></td>
+                <td><a href="delete_adv.jsp?adv_id=${columnName.id}">Delete</a></td>
                 </tr>
             </c:forEach>
         </table>
-        
-    </body>
-</html>
+    </div>
+</div>
+

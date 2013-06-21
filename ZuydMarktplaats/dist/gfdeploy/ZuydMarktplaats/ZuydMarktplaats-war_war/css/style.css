@@ -1,0 +1,52 @@
+/* 
+    Document   : style
+    Created on : 21-jun-2013, 12:00:18
+    Author     : Erwin
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+body {
+    background-color: #C2C2C2;
+}
+
+#main {
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+    color: white;
+    text-align: center;
+}
+
+#header {
+    height: 80px;
+    background-color: #707070 !important;
+}
+
+#middle {
+    height: 500px;
+}
+
+#footer {
+    height: 80px;
+    background-color: #707070 !important;
+}
+
+#middle-left {
+    width: 20%;
+    height: 100%;
+    background-color: red !important;
+    float: left;
+}
+
+#middle-right {
+    width: 80%;
+    height: 100%;
+    background-color: hotpink !important;
+    float: right;
+    padding-left: -10px;
+}

@@ -4,16 +4,14 @@
     Author     : Erwin
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-        
-        <a href="administrator.jsp">Administrator</a>
-    </body>
+<body>
+    <div id="middle">
+        <div id="middle-left">
+
+        </div>
+        <div id="middle-right">
+            <a href="administrator.jsp">Administrator</a>
+        </div>
+    </div>
+</body>
 </html>

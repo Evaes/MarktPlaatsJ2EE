@@ -41,4 +41,9 @@ public class AdvertentieFacade extends AbstractFacade<Advertentie> implements Ad
         Advertentie advertentie = em.find(Advertentie.class, id);
         em.remove(advertentie);
     }
+    
+    @Override
+    public List<Advertentie> getAdvertentieFromGebruiker(Integer user_id){
+         return em.createQuery("SELECT a FROM Advertentie a WHERE a.gebruikerid.id ='" + user_id + "'").getResultList();        
+    }
 }

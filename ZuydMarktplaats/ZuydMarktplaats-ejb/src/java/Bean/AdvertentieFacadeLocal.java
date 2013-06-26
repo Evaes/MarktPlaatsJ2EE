@@ -35,5 +35,7 @@ public interface AdvertentieFacadeLocal {
 
     @ TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void deleteAdvertentie(Integer id);
+
+    public List<Advertentie> getAdvertentieFromGebruiker(Integer user_id);
     
 }

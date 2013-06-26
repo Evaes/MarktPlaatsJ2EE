@@ -1,14 +1,13 @@
 <%-- 
-    Document   : index
-    Created on : 17-jun-2013, 22:13:54
-    Author     : Erwin
+    Document   : home
+    Created on : Jun 26, 2013, 4:10:02 PM
+    Author     : Benji
 --%>
-
 
 <div id="middle">
     <div id="middle-left">
         <a href="administrator.jsp">Administrator</a><br>
-        <a href="login">Login</a>
+        <a href="uitloggen">Uitloggen</a>
     </div>
     <div id="middle-right">
 

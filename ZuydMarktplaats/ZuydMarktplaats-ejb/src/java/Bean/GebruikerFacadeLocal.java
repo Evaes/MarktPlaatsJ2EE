@@ -35,5 +35,7 @@ public interface GebruikerFacadeLocal {
 
     @ TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void deleteUser(Integer id);
+
+    public List<Gebruiker> getUserWithUsername(String UserName, String Password);
     
 }

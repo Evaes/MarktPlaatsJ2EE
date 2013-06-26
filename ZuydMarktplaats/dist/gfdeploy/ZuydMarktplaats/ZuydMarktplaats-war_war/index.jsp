@@ -4,14 +4,13 @@
     Author     : Erwin
 --%>
 
-<body>
-    <div id="middle">
-        <div id="middle-left">
 
-        </div>
-        <div id="middle-right">
-            <a href="administrator.jsp">Administrator</a>
-        </div>
+<div id="middle">
+    <div id="middle-left">
+        <a href="administrator.jsp">Administrator</a><br>
+        <a href="login">Login</a>
     </div>
-</body>
-</html>
+    <div id="middle-right">
+
+    </div>
+</div>

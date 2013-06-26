@@ -46,4 +46,10 @@ public class GebruikerFacade extends AbstractFacade<Gebruiker> implements Gebrui
         Gebruiker gebruiker = em.find(Gebruiker.class, id);
         em.remove(gebruiker);
     }
+    
+    @Override
+    public List<Gebruiker> getUserWithUsername(String UserName, String Password){
+         return em.createQuery("SELECT g FROM Gebruiker g WHERE g.username ='" + UserName + "' AND g.password = '" + Password + "'").getResultList();
+        
+    }
 }

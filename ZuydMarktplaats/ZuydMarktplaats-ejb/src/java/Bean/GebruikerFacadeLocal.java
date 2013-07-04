@@ -38,4 +38,6 @@ public interface GebruikerFacadeLocal {
 
     public List<Gebruiker> getUserWithUsername(String UserName, String Password);
     
+    public void createUser(String UserName, String Password, String Voornaam, String Achternaam, String Email, String TelefoonNummer);
+    
 }

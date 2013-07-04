@@ -22,8 +22,9 @@ import javax.servlet.http.HttpSession;
  *
  * @author Benji
  */
-@WebServlet(name = "UserServlet", urlPatterns = {"/login", "/LoginActie"})
+@WebServlet(name = "UserServlet", urlPatterns = {"/login", "/LoginActie", "/uitloggen", "/Registreer", "/RegistreerActie"})
 public class UserServlet extends HttpServlet {
+
     @EJB
     private GebruikerFacadeLocal gebruikerFacade;
 
@@ -48,21 +49,54 @@ public class UserServlet extends HttpServlet {
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/loginpage.jsp");
             dispatcher.forward(request, response);
         } else if (userPath.equals("/LoginActie")) {
-            
-
             String Password = request.getParameter("Password");
             String UserName = request.getParameter("UserName");
             List<Gebruiker> g = gebruikerFacade.getUserWithUsername(UserName, Password);
-            HttpSession session = request.getSession();
-            
-            Gebruiker gebruiker = g.get(0);
-               
-            session.setAttribute("gebruiker", gebruiker);
-            Gebruiker gr = (Gebruiker) session.getAttribute("gebruiker");
-            out.println("Hallo " + gr.getVoornaam());  
-            
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/view/home.jsp");
+
+            if (g.isEmpty()) {
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/invalidLogin.jsp");
+                dispatcher.forward(request, response);
+            } else {
+
+                HttpSession session = request.getSession(true);
+
+                Gebruiker gebruiker = g.get(0);
+
+                session.setAttribute("gebruiker", gebruiker);
+                Gebruiker gr = (Gebruiker) session.getAttribute("gebruiker");
+                out.println("Hallo " + gr.getVoornaam());
+
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/view/home.jsp");
+                dispatcher.forward(request, response);
+            }
+        } else if (userPath.equals("/uitloggen")) {
+            HttpSession session = request.getSession(true);
+            session.invalidate();
+
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
             dispatcher.forward(request, response);
+        } else if (userPath.equals("/Registreer")) {
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/RegisterPage.jsp");
+            dispatcher.forward(request, response);
+        } else if (userPath.equals("/RegistreerActie")) {
+            String UserName = request.getParameter("UserName");
+            String Password = request.getParameter("Password");
+            String Password2 = request.getParameter("Password2");
+            String Voornaam = request.getParameter("Voornaam");
+            String Achternaam = request.getParameter("Achternaam");
+            String Email = request.getParameter("Email");
+            String TelefoonNummer = request.getParameter("TelefoonNummer");
+
+            if (!"".equals(UserName) && !"".equals(Password) && !"".equals(Voornaam) && !"".equals(Achternaam) && !"".equals(Email) && !"".equals(TelefoonNummer) && (Password == null ? Password2 == null : Password.equals(Password2))) {
+                gebruikerFacade.createUser(UserName, Password, Voornaam, Achternaam, Email, TelefoonNummer);
+
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/loginpage.jsp");
+                dispatcher.forward(request, response);
+            } else {
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/RegisterPage.jsp");
+                dispatcher.forward(request, response);
+            }
+
         }
     }
 

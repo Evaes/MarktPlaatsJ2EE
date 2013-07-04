@@ -7,7 +7,8 @@
 <div id="middle">
     <div id="middle-left">
         <a href="administrator.jsp">Administrator</a><br>
-        <a href="login">Login</a>
+        <a href="login">Login</a><br>
+        <a href="Registreer">Registreer</a><br>
     </div>
     <div id="middle-right">
         <form action="LoginActie" method="POST">

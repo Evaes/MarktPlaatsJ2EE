@@ -14,7 +14,7 @@
 
         <form action="do_edit_adv" method="POST">
             Id: <input type="text" name="id" value="${a.id}" readonly="readonly" /><br>
-            Productnaam: <input type="text" name="naam" value="${a.naam}" /> <br>
+            Productnaam: <input type="text" name="naam" value="${a.naam}" readonly="readonly"/> <br>
             Beschrijving: <input type="text" name="beschrijving" value="${a.beschrijving}" /><br>
             Vraagprijs: <input type="text" name="vraagprijs" value="${a.vraagprijs}" /><br>
             

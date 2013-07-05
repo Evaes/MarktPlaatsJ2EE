@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -100,6 +101,7 @@ public class AdvertentieServlet extends HttpServlet {
             advertentieFacade.deleteAdvertentie(id);
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/usr_advertenties");
             dispatcher.forward(request, response);
+
         }
     }
 

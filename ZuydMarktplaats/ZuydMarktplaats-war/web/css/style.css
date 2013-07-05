@@ -46,7 +46,7 @@ body {
 #middle-right {
     width: 80%;
     height: 100%;
-    background-color: hotpink !important;
+    background-color: lightblue !important;
     float: right;
     padding-left: -10px;
 }
